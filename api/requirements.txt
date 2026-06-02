@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+psycopg2-binary
+redis
+sqlalchemy
+passlib[bcrypt]
+bcrypt==4.0.1
+python-jose
+python-multipart
+celery
+pypdf
+sentence-transformers
+numpy
+chromadb
+openai

@@ -175,7 +175,7 @@ def upload_file(
     with open(file_path, "wb") as buffer:
         buffer.write(file.file.read())
 
-    task = process_document.delay(file.filename)
+    process_document(file.filename)
 
     return {
         "message": "File uploaded and queued",

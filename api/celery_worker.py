@@ -3,10 +3,12 @@ from pypdf import PdfReader
 import os
 from vector_store import create_embedding, save_embedding, store_embedding
 
+REDIS_URL = os.getenv("REDIS_URL")
+
 celery_app = Celery(
     "worker",
-    broker="redis://redis:6379/0",
-    backend="redis://redis:6379/0"
+    broker=REDIS_URL,
+    backend=REDIS_URL
 )
 
 

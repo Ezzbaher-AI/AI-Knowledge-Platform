@@ -1,3 +1,10 @@
-.env
 __pycache__/
 *.pyc
+
+.env
+
+api/uploads/
+api/vectors/
+api/chroma_db/
+
+venv/

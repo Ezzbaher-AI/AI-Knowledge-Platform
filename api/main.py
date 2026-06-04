@@ -42,6 +42,7 @@ security = HTTPBearer()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 
+
 # -----------------------------
 # Database
 # -----------------------------
@@ -303,3 +304,7 @@ def get_chats(current_user=Depends(get_current_user),
     return {
         "chats": list_user_chats(db_user.id)
     }
+
+@app.get("/test-openai")
+def test():
+    return {"key": os.getenv("OPENAI_API_KEY")}

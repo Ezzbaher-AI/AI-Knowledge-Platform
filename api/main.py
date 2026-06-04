@@ -166,7 +166,7 @@ def profile(current_user=Depends(get_current_user)):
 @app.post("/upload")
 def upload_file(
     file: UploadFile = File(...),
-    current_user=Depends(get_current_user)
+    current_user: str = Depends(get_current_user)
 ):
     os.makedirs("uploads", exist_ok=True)
 
@@ -175,13 +175,12 @@ def upload_file(
     with open(file_path, "wb") as buffer:
         buffer.write(file.file.read())
 
+    # Process immediately (no Celery)
     process_document(file.filename)
 
     return {
-        "message": "File uploaded and queued",
-        "task_id": task.id
+        "message": "File uploaded and processed successfully"
     }
-
 
 # -----------------------------
 # Ask Questions
